@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTTP Status Codes Explained</title>
+    <!-- Tailwind CSS CDN for modern, responsive styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://rsms.me/inter/inter.css');
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        .accordion-header {
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+        .accordion-header:hover {
+            background-color: #f3f4f6; /* bg-gray-100 */
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+        }
+        .accordion-content.expanded {
+            max-height: 1000px; /* A large number to allow content to expand fully */
+            padding-top: 1rem; /* p-4 */
+            padding-bottom: 1rem; /* p-4 */
+        }
+        /* Custom colors for the category cards */
+        .card-1xx { border-left-color: #3b82f6; }
+        .card-2xx { border-left-color: #22c55e; }
+        .card-3xx { border-left-color: #f97316; }
+        .card-4xx { border-left-color: #ef4444; }
+        .card-5xx { border-left-color: #8b5cf6; }
+        .status-code-item {
+            display: flex;
+            align-items: flex-start;
+        }
+        .status-code-item p {
+            flex-grow: 1;
+        }
+    </style>
+    <!-- Lucide Icons for minimalist visuals -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-gray-100 flex items-start justify-center min-h-screen p-4">
+
+    <!-- Main Container for the entire infographic -->
+    <div class="max-w-3xl w-full mx-auto space-y-4 text-center">
+        <h1 class="text-4xl sm:text-5xl font-bold text-gray-800 my-8">HTTP Status Codes Explained</h1>
+
+        <!-- Accordion container for status code categories -->
+        <div class="space-y-4 text-left">
+
+            <!-- 1xx Informational -->
+            <div class="bg-white rounded-xl shadow-lg border-l-4 card-1xx">
+                <div class="accordion-header p-6 flex items-center justify-between">
+                    <div class="flex items-center space-x-4">
+                        <span class="p-2 rounded-full bg-blue-500 text-white flex-shrink-0">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-info"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+                        </span>
+                        <h2 class="text-2xl font-bold text-gray-800">1xx Informational</h2>
+                    </div>
+                    <svg class="w-6 h-6 transform transition-transform duration-300 accordion-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                </div>
+                <div class="accordion-content px-6">
+                    <ul class="space-y-4 text-gray-700">
+                        <li class="status-code-item"><p><span class="font-semibold text-blue-600">100 Continue:</span> Server received headers, client can send body.</p></li>
+                        <li class="status-code-item"><p><span class="font-semibold text-blue-600">101 Switching Protocols:</span> Protocol change accepted (e.g., HTTP → WebSocket).</p></li>
+                        <li class="status-code-item"><p><span class="font-semibold text-blue-600">102 Processing:</span> Server received request but processing is not finished (WebDAV).</p></li>
+                        <li class="status-code-item"><p><span class="font-semibold text-blue-600">103 Early Hints:</span> Preload resources before final response.</p></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 2xx Success -->
+            <div class="bg-white rounded-xl shadow-lg border-l-4 card-2xx">
+                <div class="accordion-header p-6 flex items-center justify-between">
+                    <div class="flex items-center space-x-4">
+                        <span class="p-2 rounded-full bg-green-500 text-white flex-shrink-0">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check-circle"><path d="M22 11.08V12a10 10 0 1 1-5.93-8.08"/><path d="m9 11 3 3L22 4"/></svg>
+                        </span>
+                        <h2 class="text-2xl font-bold text-gray-800">2xx Success</h2>
+                    </div>
+                    <svg class="w-6 h-6 transform transition-transform duration-300 accordion-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                </div>
+                <div class="accordion-content px-6">
+                    <ul class="space-y-4 text-gray-700">
+                        <li class="status-code-item"><p><span class="font-semibold text-green-600">200 OK:</span> Request succeeded.</p></li>
+                        <li class="status-code-item"><p><span class="font-semibold text-green-600">201 Created:</span> Resource created (POST successful).</p></li>
+                        <li class="status-code-item"><p><span class="font-semibold text-green-600">202 Accepted:</span> Request accepted but not completed yet (async processing).</p></li>
+                        <li class="status-code-item"><p><span class="font-semibold text-green-600">203 Non-Authoritative Information:</span> Response from a third-party source.</p></li>
+                        <li class="status-code-item"><p><span class="font-semibold text-green-600">204 No Content:</span> Success, no response body.</p></li>
+                        <li class="status-code-item"><p><span class="font-semibold text-green-600">205 Reset Content:</span> Client should reset the document view.</p></li>
+                        <li class="status-code-item"><p><span class="font-semibold text-green-600">206 Partial Content:</span> Partial response (used in range requests, downloads).</p></li>
+                        <li class="status-code-item"><p><span class="font-semibold text-green-600">207 Multi-Status:</span> Multiple status codes for different resources (WebDAV).</p></li>
+                        <li class="status-code-item"><p><span class="font-semibold text-green-600">208 Already Reported:</span> Avoids repeated elements in WebDAV multistatus.</p></li>
+                        <li class="status-code-item"><p><span class="font-semibold text-green-600">226 IM Used:</span> Response with instance manipulations applied (rare).</p></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 3xx Redirection -->
+            <div class="bg-white rounded-xl shadow-lg border-l-4 card-3xx">
+                <div class="accordion-header p-6 flex items-center justify-between">
+                    <div class="flex items-center space-x-4">
+                        <span class="p-2 rounded-full bg-orange-500 text-white flex-shrink-0">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-git-commit"><circle cx="12" cy="12" r="4"/><line x1="1.05" x2="7" y1="12" y2="12"/><line x1="17.01" x2="22.96" y1="12" y2="12"/></svg>
+                        </span>
+                        <h2 class="text-2xl font-bold text-gray-800">3xx Redirection</h2>
+                    </div>
+                    <svg class="w-6 h-6 transform transition-transform duration-300 accordion-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                </div>
+                <div class="accordion-content px-6">
+                    <ul class="space-y-4 text-gray-700">
+                        <li class="status-code-item"><p><span class="font-semibold text-orange-600">300 Multiple Choices:</span> Multiple options for the resource.</p></li>
+                        <li class="status-code-item"><p><span class="font-semibold text-orange-600">301 Moved Permanently:</span> Resource moved to a new URL.</p></li>
+                        <li class="status-code-item"><p><span class="font-semibold text-orange-600">302 Found:</span> Temporary redirect (most common).</p></li>
+                        <li class="status-code-item"><p><span class="font-semibold text-orange-600">303 See Other:</span> Use GET to fetch the resource at another URL.</p></li>
+                        <li class="status-code-item"><p><span class="font-semibold text-orange-600">304 Not Modified:</span> Cached version is still valid.</p></li>
+                        <li class="status-code-item"><p><span class="font-semibold text-orange-600">305 Use Proxy:</span> Deprecated; resource must be accessed via proxy.</p></li>
+                        <li class="status-code-item"><p><span class="font-semibold text-orange-600">306 Switch Proxy:</span> No longer used.</p></li>
+                        <li class="status-code-item"><p><span class="font-semibold text-orange-600">307 Temporary Redirect:</span> Temporary redirect, method not changed.</p></li>
+                        <li class="status-code-item"><p><span class="font-semibold text-orange-600">308 Permanent Redirect:</span> Permanent redirect, method not changed.</p></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 4xx Client Errors -->
+            <div class="bg-white rounded-xl shadow-lg border-l-4 card-4xx">
+                <div class="accordion-header p-6 flex items-center justify-between">
+                    <div class="flex items-center space-x-4">
+                        <span class="p-2 rounded-full bg-red-500 text-white flex-shrink-0">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-alert-triangle"><path d="m21.73 18-8-14a2 2 0 0 0-3.46 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+                        </span>
+                        <h2 class="text-2xl font-bold text-gray-800">4xx Client Errors</h2>
+                    </div>
+                    <svg class="w-6 h-6 transform transition-transform duration-300 accordion-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                </div>
+                <div class="accordion-content px-6">
+                    <ul class="space-y-4 text-gray-700">
+                        <li class="status-code-item"><p><span class="font-semibold text-red-600">400 Bad Request:</span> Invalid request (syntax, parameters).</p></li>
+                        <li class="status-code-item"><p><span class="font-semibold text-red-600">401 Unauthorized:</span> Authentication required or failed.</p></li>
+                        <li class="status-code-item"><p><span class="font-semibold text-red-600">402 Payment Required:</span> Reserved for future use (mainly APIs with paywalls).</p></li>
+                        <li class="status-code-item"><p><span class="font-semibold text-red-600">403 Forbidden:</span> Client authenticated but not allowed.</p></li>
+                        <li class="status-code-item"><p><span class="font-semibold text-red-600">404 Not Found:</span> Resource doesn’t exist.</p></li>
+                        <li class="status-code-item"><p><span class="font-semibold text-red-600">405 Method Not Allowed:</span> HTTP method not supported.</p></li>
+                        <li class="status-code-item"><p><span class="font-semibold text-red-600">406 Not Acceptable:</span> Response format not acceptable by client.</p></li>
+                        <li class="status-code-item"><p><span class="font-semibold text-red-600">407 Proxy Authentication Required:</span> Must authenticate with proxy first.</p></li>
+                        <li class="status-code-item"><p><span class="font-semibold text-red-600">408 Request Timeout:</span> Client took too long to send request.</p></li>
+                        <li class="status-code-item"><p><span class="font-semibold text-red-600">409 Conflict:</span> Request conflicts with current resource state.</p></li>
+                        <li class="status-code-item"><p><span class="font-semibold text-red-600">410 Gone:</span> Resource permanently removed.</p></li>
+                        <li class="status-code-item"><p><span class="font-semibold text-red-600">411 Length Required:</span> Missing Content-Length header.</p></li>
+                        <li class="status-code-item"><p><span class="font-semibold text-red-600">412 Precondition Failed:</span> Preconditions in headers not met.</p></li>
+                        <li class="status-code-item"><p><span class="font-semibold text-red-600">413 Payload Too Large:</span> Request body too big.</p></li>
+                        <li class="status-code-item"><p><span class="font-semibold text-red-600">414 URI Too Long:</span> URL too long for server to process.</p></li>
+                        <li class="status-code-item"><p><span class="font-semibold text-red-600">415 Unsupported Media Type:</span> Content type not supported.</p></li>
+                        <li class="status-code-item"><p><span class="font-semibold text-red-600">416 Range Not Satisfiable:</span> Invalid range request.</p></li>
+                        <li class="status-code-item"><p><span class="font-semibold text-red-600">417 Expectation Failed:</span> Expect header requirements not met.</p></li>
+                        <li class="status-code-item"><p><span class="font-semibold text-red-600">418 I’m a Teapot:</span> Joke status (RFC 2324, Easter egg).</p></li>
+                        <li class="status-code-item"><p><span class="font-semibold text-red-600">421 Misdirected Request:</span> Sent to a server that can’t produce response.</p></li>
+                        <li class="status-code-item"><p><span class="font-semibold text-red-600">422 Unprocessable Entity:</span> Request understood but invalid (WebDAV, validation errors).</p></li>
+                        <li class="status-code-item"><p><span class="font-semibold text-red-600">423 Locked:</span> Resource locked (WebDAV).</p></li>
+                        <li class="status-code-item"><p><span class="font-semibold text-red-600">424 Failed Dependency:</span> Dependent request failed (WebDAV).</p></li>
+                        <li class="status-code-item"><p><span class="font-semibold text-red-600">425 Too Early:</span> Server not willing to process replayed request (TLS).</p></li>
+                        <li class="status-code-item"><p><span class="font-semibold text-red-600">426 Upgrade Required:</span> Client should switch protocols.</p></li>
+                        <li class="status-code-item"><p><span class="font-semibold text-red-600">428 Precondition Required:</span> Missing required precondition headers.</p></li>
+                        <li class="status-code-item"><p><span class="font-semibold text-red-600">429 Too Many Requests:</span> Rate limit exceeded.</p></li>
+                        <li class="status-code-item"><p><span class="font-semibold text-red-600">431 Request Header Fields Too Large:</span> Headers too big.</p></li>
+                        <li class="status-code-item"><p><span class="font-semibold text-red-600">451 Unavailable For Legal Reasons:</span> Blocked for legal reasons.</p></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 5xx Server Errors -->
+            <div class="bg-white rounded-xl shadow-lg border-l-4 card-5xx">
+                <div class="accordion-header p-6 flex items-center justify-between">
+                    <div class="flex items-center space-x-4">
+                        <span class="p-2 rounded-full bg-purple-500 text-white flex-shrink-0">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-server-crash"><path d="M6 10H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-2"/><path d="M6 14H4a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2h-2"/><path d="M6 6h.01"/><path d="M6 18h.01"/><path d="M13 6h9"/><path d="M13 18h9"/><path d="M10 10-2 22"/><path d="m10 22 2-12"/></svg>
+                        </span>
+                        <h2 class="text-2xl font-bold text-gray-800">5xx Server Errors</h2>
+                    </div>
+                    <svg class="w-6 h-6 transform transition-transform duration-300 accordion-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                </div>
+                <div class="accordion-content px-6">
+                    <ul class="space-y-4 text-gray-700">
+                        <li class="status-code-item"><p><span class="font-semibold text-purple-600">500 Internal Server Error:</span> General server error.</p></li>
+                        <li class="status-code-item"><p><span class="font-semibold text-purple-600">501 Not Implemented:</span> Method not supported.</p></li>
+                        <li class="status-code-item"><p><span class="font-semibold text-purple-600">502 Bad Gateway:</span> Invalid response from upstream server.</p></li>
+                        <li class="status-code-item"><p><span class="font-semibold text-purple-600">503 Service Unavailable:</span> Server overloaded or under maintenance.</p></li>
+                        <li class="status-code-item"><p><span class="font-semibold text-purple-600">504 Gateway Timeout:</span> Upstream server didn’t respond in time.</p></li>
+                        <li class="status-code-item"><p><span class="font-semibold text-purple-600">505 HTTP Version Not Supported:</span> Unsupported HTTP version.</p></li>
+                        <li class="status-code-item"><p><span class="font-semibold text-purple-600">506 Variant Also Negotiates:</span> Configuration error in content negotiation.</p></li>
+                        <li class="status-code-item"><p><span class="font-semibold text-purple-600">507 Insufficient Storage:</span> Server can’t store the representation (WebDAV).</p></li>
+                        <li class="status-code-item"><p><span class="font-semibold text-purple-600">508 Loop Detected:</span> Infinite loop in request (WebDAV).</p></li>
+                        <li class="status-code-item"><p><span class="font-semibold text-purple-600">510 Not Extended:</span> Further extensions required to fulfill request.</p></li>
+                        <li class="status-code-item"><p><span class="font-semibold text-purple-600">511 Network Authentication Required:</span> Must authenticate to access network.</p></li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // Use Lucide to replace SVG tags with icons
+        lucide.createIcons();
+
+        // Get all accordion headers
+        const accordionHeaders = document.querySelectorAll('.accordion-header');
+
+        // Add a click event listener to each header
+        accordionHeaders.forEach(header => {
+            header.addEventListener('click', () => {
+                const content = header.nextElementSibling;
+                const icon = header.querySelector('.accordion-icon');
+                
+                // Toggle the 'expanded' class on the content and rotate the icon
+                content.classList.toggle('expanded');
+                icon.classList.toggle('rotate-180');
+            });
+        });
+    </script>
+</body>
+</html>
